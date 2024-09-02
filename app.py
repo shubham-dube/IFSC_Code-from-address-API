@@ -5,10 +5,10 @@ import html
 import uuid
 import base64
 
-from asgiref.wsgi import WsgiToAsgi
+# from asgiref.wsgi import WsgiToAsgi
 
 app = Flask(__name__)
-asgi_app = WsgiToAsgi(app)
+# asgi_app = WsgiToAsgi(app)
 
 
 @app.route("/api/v1/getBanks", methods=["GET"])
@@ -248,8 +248,3 @@ def get_ifsc_code():
     except Exception as e:
         print(e)
         return jsonify({"error": "Error in fetching IFSC Code. Please Retry Again"})
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(asgi_app, host='0.0.0.0', port=5001)
-    
